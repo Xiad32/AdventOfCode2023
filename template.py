@@ -1,9 +1,10 @@
 from pprint import pprint
 
-day = "01a"
+day = "02"
+puzzle = "02a"
 test = False
-inputFile = day
-outputFile = day
+inputFile = outputFile =  day + sep + puzzle
+
 if test:
     inputFile += "_test"
     outputFile += "_test"
