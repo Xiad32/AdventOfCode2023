@@ -1,6 +1,9 @@
 from pprint import pprint
+from os import path
 
-day = "01a"
+day = path.basename(__file__)
+day = day[:-2]
+
 test = False
 inputFile = day
 outputFile = day

@@ -1,12 +1,12 @@
 import os
 import subprocess
 
-day = "02"
+day = "03"
 try:
     os.mkdir(day)
 except:
     print("exception")
-puzzle = "02a"
+puzzle = "03a"
 
 files = ["_test_input.txt", "_test_output.txt", "_input.txt","_output.txt"]
 for file in files:
