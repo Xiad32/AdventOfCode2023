@@ -1,4 +1,5 @@
 from pprint import pprint
+from os import sep 
 
 day = "02"
 puzzle = "02a"

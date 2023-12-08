@@ -2,7 +2,7 @@ from pprint import pprint
 from os import sep
 
 day = "02"
-puzzle = "02a"
+puzzle = "02b"
 test = False
 inputFile = outputFile =  day + sep + puzzle
 
@@ -26,6 +26,7 @@ if test:
     pprint(outputData)
 
 ################ CODE HERE ######################
+
 class PulledSet:
 
     validation =  {"red": 12, "blue": 14, "green": 13}
@@ -37,6 +38,7 @@ class PulledSet:
         self.games = []
         for game in gamesStr:
             self.games.append(self.parseGame(game))
+        self.gameMin = self.minCubes()
         
     def parseGame(self, game: str):
         res = {"red": 0,
@@ -48,6 +50,17 @@ class PulledSet:
             tag = values[2]
             res[tag] = max(res[tag], int(values[1]))    
         return res
+
+    def minCubes(self):
+        res = {"red": 0,
+        "green" : 0,
+        "blue" : 0}
+        colors = ["red", "blue", "green"]
+        for game in self.games:
+            for color in colors:
+                res[color] = max (res[color], game[color])
+
+        return res 
 
     def valid(self) -> bool:
         for game in self.games:
@@ -65,7 +78,12 @@ class PulledSet:
                 return False
         pprint(f"Game {self.id} is valid")
         return True
-
+    
+    def power(self) -> int:
+        res = 1
+        for color in ["red", "green", "blue"]:
+            res *= self.gameMin[color]
+        return res
 
 
 inputs = []
@@ -74,8 +92,7 @@ for line in inputData:
 
 res = 0
 for attempt in inputs:
-    if attempt.valid():
-        res += attempt.id
+    res += attempt.power()
         
 
 
