@@ -1,12 +1,13 @@
 from pprint import pprint
-from os import path
+from os import path, sep
 
 day = path.basename(__file__)
-day = day[:-2]
+puzzle = day[:-3]
+day = day[:-4]
 
 test = False
-inputFile = day
-outputFile = day
+inputFile = outputFile =  day + sep + puzzle
+
 if test:
     inputFile += "_test"
     outputFile += "_test"
